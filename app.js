@@ -1,23 +1,26 @@
-const jobNum = document.getElementById('job-number');
+//const jobNum = document.getElementById('job-number');
 document.getElementById('subButton').addEventListener('click', getTime);
 
 // url will be: http://vmmkweb/jobinfo/jobinfo.aspx?jobno=${jobNum}
 
-
 function getTime(){
-  // bring in our dependancies
-  const request = require('request');
-  const cheerio = require('cheerio');
+  // bring in our dependancies, require these packages
+  let axios = require('axios');
+  let cheerio = require('cheerio');
+  let fs = require('fs');
 
-  request(`http://vmmkweb/jobinfo/jobinfo.aspx?jobno=221163`, (error, response, html) => {
-    if(!error && response.statusCode == 200){
-      // succsessfull http response and no error
-      const $ = cheerio.load(html);
-      const entireTable = $('#tbl_JobInfo');
-      const output = entireTable.find('table').text();
+  // now scrape by making a get request with axios
+  axios.get('http://www.espncricinfo.com')
+    .then((response) => {
+        if(response.status === 200) {
+          const html = response.data;
+          const $ = cheerio.load(html);
 
-      console.log(output);
+          const headline = $('.headlineStack');
+          const title = headline.find('h1').text();
+          console.log(title);
+
     }
+    }, (error) => console.log(err) );
 
-  });
 }

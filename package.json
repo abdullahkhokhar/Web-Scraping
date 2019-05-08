@@ -1,5 +1,5 @@
 {
-  "name": "Web-Scraping",
+  "name": "web-scraping",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/abdullahkhokhar/Web-Scraping.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,7 +17,7 @@
   },
   "homepage": "https://github.com/abdullahkhokhar/Web-Scraping#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "request": "^2.88.0"
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3"
   }
 }
