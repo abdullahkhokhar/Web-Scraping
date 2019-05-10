@@ -17,16 +17,15 @@ function getTime(){
   Example URL to scrape for:
   http://vmmkweb/jobinfo/dumpgenbomdwfcgi-4.aspx?BOMDATE=5-8-2019&PROJECT=221163&QUERY=100&FORMAT=1&ITEM=L709C00000000000&TOP=L709C00000000000
   */
-  axios.get("http://vmmkweb/jobinfo/jobinfo.aspx?jobno=221163")
+  axios.get("https://savaria.pivot88.com/manageAssignments/setfilter?clear_session_filter=1&project%5B0%5D=2066&status%5B0%5D=0&item_name=v1504&qualityplan_name=tow")
     .then((response) => {
         if(response.status === 200) {
           // sucsessfull call to get
           const html = response.data;
           const $ = cheerio.load(html);
 
-          const jobTable = $('#tbl_JobInfo');
-          const table = jobTable.find('table');
-          console.log(table.text());
+          const jobTable = $('.row');
+          console.log(jobTable.text());
 
     }
     }, (error) => console.log(err) );
